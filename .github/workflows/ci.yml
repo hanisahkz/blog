@@ -1,0 +1,43 @@
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['2.7']
+    services:
+      db:
+        image: postgres:12
+        env:
+          POSTGRES_PASSWORD: ${{ secrets.PG_GA_PASSWORD }}
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14.16.1
+      - name: Run tests
+        env:
+          DATABASE_URL: postgres://postgres:@localhost:5432/test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ${{ secrets.PG_GA_PASSWORD }}
+          RAILS_ENV: test
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rails db:prepare
+          bundle exec rails webpacker:install
+          bundle exec rails webpacker:compile
+          bundle exec rails test

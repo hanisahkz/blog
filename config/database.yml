@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  username: postgres
+  password: postgres
+  host:     localhost
+
+development:
+  <<: *default
+  database: blog_dev
+
+test:
+  <<: *default
+  database: blog_test
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") if Rails.env == "test" %>
+  
+production:
+  <<: *default
+  database: blog_prod
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") if Rails.env == "production" %>
