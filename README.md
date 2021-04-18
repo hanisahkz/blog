@@ -1,24 +1,17 @@
-# README
+# Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails demo repo for automated deployment using Github Actions.
 
-Things you may want to cover:
+# Goals
 
-* Ruby version
+- To automate deploying Heroku app via Github Actions.
+- To familiarize using `heroku rails console` in production.
 
-* System dependencies
+[Link to site](https://enigmatic-savannah-01002.herokuapp.com/).
 
-* Configuration
+⚠️ Note: During a cold start, it might take a while before it successfully returns a response.
 
-* Database creation
+# Health Check
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Verify that the app is healthy: `$ for (( ; ; )) ; do curl -q https://enigmatic-savannah-01002.herokuapp.com/ping;echo  ; done`
+- App is healthy when the returned response is: `ok` 
