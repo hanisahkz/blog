@@ -1,8 +1,9 @@
 name: Build
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
+  workflow_call:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
