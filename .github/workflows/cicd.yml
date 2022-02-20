@@ -51,3 +51,5 @@ jobs:
           checkstring: "ok"
           delay: 5
           rollbackonhealthcheckfailed: true
+  sonarcloud-scan:
+    uses: .github/workflows/run-sonarcloud-scan.yml
