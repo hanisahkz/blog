@@ -1,4 +1,8 @@
-on: [push, pull_request]
+name: Main Github Actions job
+on:
+  push:
+    branches:
+      - main
 jobs:
   test:
     runs-on: ubuntu-latest
