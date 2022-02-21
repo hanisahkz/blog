@@ -1,9 +1,14 @@
-name: Build
+name: SonarCloud scan
 on:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:    
+      - 'main'
+  workflow_dispatch:
   workflow_call:
+    secrets:
+        SONAR_TOKEN:
+          description: 'Token for SonarCloud'
+          required: true 
   pull_request:
     types: [opened, synchronize, reopened, edited]
 jobs:

@@ -52,4 +52,6 @@ jobs:
           delay: 5
           rollbackonhealthcheckfailed: true
   sonarcloud-scan:
-    uses: .github/workflows/run-sonarcloud-scan.yml
+    uses: ./.github/workflows/run-sonarcloud-scan.yml
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # https://github.community/t/reusable-workflows-secrets-and-environments/203695/26

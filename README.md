@@ -1,3 +1,5 @@
+![SonarScan](https://github.com/hanisahkz/blog/actions/workflows/run-sonarcloud-scan.yml/badge.svg)
+
 # Blog
 
 A Ruby on Rails demo repo for automated deployment using Github Actions.
