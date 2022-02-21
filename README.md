@@ -1,4 +1,4 @@
-# Blog Readme
+# Blog
 
 A Ruby on Rails demo repo for automated deployment using Github Actions.
 
