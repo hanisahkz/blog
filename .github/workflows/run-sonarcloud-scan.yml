@@ -6,8 +6,6 @@ on:
         SONAR_TOKEN:
           description: 'Token for SonarCloud'
           required: true 
-  pull_request:
-    types: [opened, synchronize, reopened, edited]
 jobs:
   sonarcloud:
     name: Run SonarCloud scan
