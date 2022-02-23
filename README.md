@@ -16,4 +16,4 @@ A Ruby on Rails demo repo for automated deployment using Github Actions.
 # Health Check
 
 - Verify that the app is healthy: `$ for (( ; ; )) ; do curl -q https://enigmatic-savannah-01002.herokuapp.com/ping;echo  ; done`
-- App is healthy when the returned response is: `ok` 
+- App is healthy when the returned response is: `ok` .
